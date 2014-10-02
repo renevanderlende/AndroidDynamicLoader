@@ -27,15 +27,15 @@ import com.dianping.loader.model.FileSpec;
 
 public class RepositoryManager {
 	/**
-	 * 已经下载并校验完毕，可以直接加载
+	 * Has been downloaded and check is completed, you can directly load
 	 */
 	static final String STATUS_DONE = "DONE";
 	/**
-	 * 未开始下载
+	 * Not to start the download
 	 */
 	static final String STATUS_IDLE = "IDLE";
 	/**
-	 * 当前下载
+	 * Current download
 	 */
 	static final String STATUS_RUNNING = "RUNNING";
 
@@ -52,31 +52,35 @@ public class RepositoryManager {
 	// ./repo/<id>/<md5 or 1>.apk
 	// ./repo/<id>/dexout
 	private final File repoDir;
+	
 	// ./repo/tmp/<id>.<random.4>
 	private final File tmpDir;
-	private final LinkedList<FileSpec> order = new LinkedList<FileSpec>();
-	private final HashMap<String, FileSpec> map = new HashMap<String, FileSpec>();
-	private final HashMap<String, String> status = new HashMap<String, String>();
-	private final HashMap<String, Integer> require = new HashMap<String, Integer>();
-	private final ArrayList<StatusChangeListener> listeners = new ArrayList<StatusChangeListener>();
+	
+	private final LinkedList<FileSpec>				order	  = new LinkedList<FileSpec>();
+	private final HashMap<String, FileSpec>			map		  = new HashMap<String, FileSpec>();
+	private final HashMap<String, String>			status	  = new HashMap<String, String>();
+	private final HashMap<String, Integer>			require	  = new HashMap<String, Integer>();
+	private final ArrayList<StatusChangeListener>	listeners = new ArrayList<StatusChangeListener>();
+	
 	private Worker running;
 
 	public RepositoryManager(Context context) {
 		this.context = context;
+		
 		ConnectivityManager cm = null;
 		try {
-			cm = (ConnectivityManager) context
-					.getSystemService(Context.CONNECTIVITY_SERVICE);
-		} catch (Exception e) {
-			Log.w("loader",
-					"repository manager start without connectivity manager", e);
+			cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
 		}
+		catch (Exception e) { Log.w("loader", "repository manager start without connectivity manager", e); }
+		
 		connManager = cm;
 
 		repoDir = new File(context.getFilesDir(), "repo");
 		repoDir.mkdir();
+		
 		tmpDir = new File(repoDir, "tmp");
 		tmpDir.mkdir();
+		
 		File[] tmps = tmpDir.listFiles();
 		if (tmps != null) {
 			for (File tmpf : tmps) {

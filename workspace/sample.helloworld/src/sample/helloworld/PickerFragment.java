@@ -22,11 +22,9 @@ import android.widget.ArrayAdapter;
  * @author mmin18
  * 
  */
-public class PickerFragment extends ListFragment implements
-		AdapterView.OnItemClickListener {
-	String[] ITEMS = { "Alex", "Andy", "Ben", "Carl", "Denny", "Edward",
-			"Howard", "Ivan", "Jimmy", "Kevin", "Larry", "Mark", "Nicholas",
-			"Paul", "Ryan", "Steven", "Tommy", "Vincent" };
+public class PickerFragment extends ListFragment implements AdapterView.OnItemClickListener {
+	String[] ITEMS = { "Alex", "Andy", "Ben", "Carl", "Denny", "Edward", "Howard", "Ivan", "Jimmy", "Kevin", "Larry", "Mark", "Nicholas", "Paul",
+			"Ryan", "Steven", "Tommy", "Vincent" };
 
 	String selection;
 
@@ -42,8 +40,7 @@ public class PickerFragment extends ListFragment implements
 	public void onViewCreated(View view, Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
-		setListAdapter(new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1, ITEMS) {
+		setListAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, ITEMS) {
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent) {
 				View v = super.getView(position, convertView, parent);
@@ -61,8 +58,7 @@ public class PickerFragment extends ListFragment implements
 	}
 
 	@Override
-	public void onItemClick(AdapterView<?> parent, View view, int position,
-			long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
 		Intent data = new Intent();
 		data.putExtra("selection", ITEMS[position]);

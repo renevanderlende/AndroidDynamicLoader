@@ -10,22 +10,22 @@ import android.os.Parcelable;
 public class FileSpec implements Parcelable {
 	/**
 	 * Download when required<br>
-	 * 需要时再下载
+	 * Then download if needed
 	 */
 	public static final int DOWN_NONE = 0;
 	/**
 	 * Try to download in background if Wifi or faster network is available<br>
-	 * Wifi网络下尝试后台下载
+	 * Try background downloading under Wifi Network
 	 */
 	public static final int DOWN_WIFI = 1;
 	/**
 	 * Try to download in background if 3G or faster network is available<br>
-	 * 3G或Wifi网络下尝试后台下载
+	 * Try background downloading on 3G or Wifi network
 	 */
 	public static final int DOWN_3G = 2;
 	/**
 	 * Try to download in background<br>
-	 * 任何时候都尝试后台下载
+	 * Ever try background downloading
 	 */
 	public static final int DOWN_ALWAYS = 5;
 
@@ -36,8 +36,7 @@ public class FileSpec implements Parcelable {
 	private int length;
 	private String[] deps;
 
-	public FileSpec(String id, String url, String md5, int down, int length,
-			String[] deps) {
+	public FileSpec(String id, String url, String md5, int down, int length, String[] deps) {
 		this.id = id;
 		this.url = url;
 		this.md5 = md5;

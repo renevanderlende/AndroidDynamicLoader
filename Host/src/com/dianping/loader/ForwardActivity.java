@@ -15,9 +15,9 @@ import com.dianping.app.MyActivity;
 import com.dianping.app.MyApplication;
 
 /**
- * 根据URL Map处理外部链接打开URL Scheme的跳转逻辑
+ * Open URL Scheme jump processing logic based on URL Map External Links
  * <p>
- * 在AndroidManifest.xml中注册应用的host为ForwardActivity<br>
+ * Registered in AndroidManifest.xml host applications for ForwardActivity<br>
  * 
  * @author Yimin
  * 
@@ -31,20 +31,16 @@ public class ForwardActivity extends MyActivity {
 		super.onCreate(savedInstanceState);
 
 		rootView = new FrameLayout(this);
-		rootView.setLayoutParams(new ViewGroup.LayoutParams(
-				ViewGroup.LayoutParams.MATCH_PARENT,
-				ViewGroup.LayoutParams.MATCH_PARENT));
+		rootView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 		rootView.setId(android.R.id.primary);
 		setContentView(rootView);
 
-		launched = savedInstanceState == null ? false : savedInstanceState
-				.getBoolean("launched");
+		launched = savedInstanceState == null ? false : savedInstanceState.getBoolean("launched");
 		if (!(getApplication() instanceof MyApplication)) {
 			TextView text = new TextView(this);
-			text.setText("无法载入页面 #401"); // #401
-			text.setLayoutParams(new FrameLayout.LayoutParams(
-					ViewGroup.LayoutParams.WRAP_CONTENT,
-					ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+			text.setText("Unable to load page #401"); // #401
+			text.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
+					Gravity.CENTER));
 			rootView.addView(text);
 			return;
 		}
@@ -78,8 +74,7 @@ public class ForwardActivity extends MyActivity {
 		intent = urlMap(i);
 		try {
 			// check if it open myself to avoid infinite loop
-			List<ResolveInfo> l = getPackageManager().queryIntentActivities(
-					intent, 0);
+			List<ResolveInfo> l = getPackageManager().queryIntentActivities(intent, 0);
 			if (l.size() == 1) {
 				ResolveInfo ri = l.get(0);
 				if (getPackageName().equals(ri.activityInfo.packageName)) {
@@ -94,11 +89,10 @@ public class ForwardActivity extends MyActivity {
 			launched = true;
 		} catch (Exception e) {
 			TextView text = new TextView(this);
-			text.setText("无法载入页面 #402"); // #402
+			text.setText("Unable to load page #402"); // #402
 			text.append("\n" + e.toString());
-			text.setLayoutParams(new FrameLayout.LayoutParams(
-					ViewGroup.LayoutParams.WRAP_CONTENT,
-					ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
+			text.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT,
+					Gravity.CENTER));
 			rootView.addView(text);
 			Log.e("loader", "unable to forward " + getIntent(), e);
 		}

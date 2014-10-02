@@ -18,8 +18,7 @@ public class HelloFragment extends Fragment {
 	String name;
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		// MyResources manages the resources in specific package.
 		// Using a Class object to obtain an instance of MyResources.
@@ -43,23 +42,20 @@ public class HelloFragment extends Fragment {
 		}
 		update();
 
-		view.findViewById(R.id.start_url).setOnClickListener(
-				new View.OnClickListener() {
-					@Override
-					public void onClick(View v) {
+		view.findViewById(R.id.start_url).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
 
-						// Start the PickerFragment by url mapping.
-						// (app://pickname is mapped to PickerFragment, defined
-						// in fragment.properties)
-						Intent i = new Intent(Intent.ACTION_VIEW, Uri
-								.parse(MyApplication.PRIMARY_SCHEME
-										+ "://pickname?selection=" + name));
+				// Start the PickerFragment by url mapping.
+				// (app://pickname is mapped to PickerFragment, defined
+				// in fragment.properties)
+				Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(MyApplication.PRIMARY_SCHEME + "://pickname?selection=" + name));
 
-						// We need a result, the result will be callback in
-						// onActivityResult()
-						startActivityForResult(i, 1);
-					}
-				});
+				// We need a result, the result will be callback in
+				// onActivityResult()
+				startActivityForResult(i, 1);
+			}
+		});
 	}
 
 	@Override

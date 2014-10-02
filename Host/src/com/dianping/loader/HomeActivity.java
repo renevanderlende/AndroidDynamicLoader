@@ -57,8 +57,7 @@ public class HomeActivity extends MyActivity {
 				lastUrl.setText(url);
 			} catch (Exception e) {
 				SiteSpec lastSite = MyApplication.instance().readSite();
-				String url = MyApplication.PRIMARY_SCHEME + "://"
-						+ lastSite.fragments()[0].host();
+				String url = MyApplication.PRIMARY_SCHEME + "://" + lastSite.fragments()[0].host();
 				lastUrl.setText(url);
 			}
 		}
@@ -72,8 +71,7 @@ public class HomeActivity extends MyActivity {
 				worker.start();
 				v.setEnabled(false);
 			} else if (v.getId() == R.id.go_last) {
-				String url = ((TextView) findViewById(R.id.last_url)).getText()
-						.toString();
+				String url = ((TextView) findViewById(R.id.last_url)).getText().toString();
 				startActivity(url);
 			} else if (v.getId() == R.id.go_helloworld) {
 				siteUrl.setText("https://raw.github.com/mmin18/AndroidDynamicLoader/master/site/helloworld/site.txt");
@@ -97,8 +95,7 @@ public class HomeActivity extends MyActivity {
 			final String siteUrl = url;
 			try {
 				URL url = new URL(siteUrl);
-				HttpURLConnection conn = (HttpURLConnection) url
-						.openConnection();
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 				conn.setConnectTimeout(15000);
 				InputStream ins = conn.getInputStream();
 				ByteArrayOutputStream bos = new ByteArrayOutputStream(16 * 1024);
@@ -139,10 +136,8 @@ public class HomeActivity extends MyActivity {
 					@Override
 					public void run() {
 						findViewById(R.id.go).setEnabled(true);
-						String url = MyApplication.PRIMARY_SCHEME + "://"
-								+ fSite.fragments()[0].host();
-						Intent i = new Intent(Intent.ACTION_VIEW,
-								Uri.parse(url));
+						String url = MyApplication.PRIMARY_SCHEME + "://" + fSite.fragments()[0].host();
+						Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 						i.putExtra("_site", fSite);
 						startActivity(i);
 					}
@@ -153,8 +148,7 @@ public class HomeActivity extends MyActivity {
 					@Override
 					public void run() {
 						findViewById(R.id.go).setEnabled(true);
-						Toast.makeText(HomeActivity.this, e.toString(),
-								Toast.LENGTH_LONG).show();
+						Toast.makeText(HomeActivity.this, e.toString(), Toast.LENGTH_LONG).show();
 					}
 				});
 			}

@@ -128,9 +128,9 @@ public class MyResources {
 	}
 
 	/**
-	 * 返回独立的Resources
-	 * <p>
-	 * 对Resources进行操作时不会处理依赖关系，所有依赖包的内容均不会出现在该Resources中。
+	 *Independent Resources Returns
+	 * <P>
+	 * When operating on Resources does not handle dependencies, all dependent on the contents of the package will not appear in the Resources.
 	 * 
 	 * @return
 	 */
@@ -139,9 +139,9 @@ public class MyResources {
 	}
 
 	/**
-	 * 返回独立的AssetManager
-	 * <p>
-	 * 对AssetManager进行操作时不会处理依赖关系，所有依赖包的内容均不会出现在该AssetManager中。
+	 * Return to independent AssetManager
+	 * <P>
+	 * When AssetManager operation does not handle dependencies, all dependent on the contents of the package will not appear in the AssetManager.
 	 * 
 	 * @return
 	 */
@@ -150,9 +150,9 @@ public class MyResources {
 	}
 
 	/**
-	 * 同LayoutInflater.inflate(id, parent, attachToRoot)
-	 * <p>
-	 * 不会处理依赖关系，请确保id对应的layout在当前包内
+	 * With LayoutInflater.inflate (id, parent, attachToRoot)
+	 * <P>
+	 * Does not handle dependencies, make sure id corresponding layout in the current package
 	 * 
 	 * @param name
 	 * @return
@@ -256,12 +256,12 @@ public class MyResources {
 	}
 
 	/**
-	 * 从当前类所在的包载入MyResource
+	 * Loading MyResource from the package where the current class
 	 * 
 	 * @param clazz
 	 * @return
 	 * @throws RuntimeException
-	 *             如果当前类不是动态加载包载入的
+	 *             If the current class is not loaded dynamically loaded package
 	 */
 	public static MyResources getResource(Class<?> clazz) {
 		if (!(clazz.getClassLoader() instanceof MyClassLoader)) {

@@ -21,14 +21,14 @@ import com.dianping.loader.model.FileSpec;
 import com.dianping.loader.model.SiteSpec;
 
 /**
- * 主Activity容器，负责启动并装载Fragment
+ * Main Activity container is responsible for starting and load Fragment
  * <p>
- * 启动前所有依赖的资源必须加载完毕（由urlMapping和LoaderActivity负责）
+ * Before starting all dependent resources must be loaded (by urlMapping and LoaderActivity responsible)
  * <p>
- * Intent参数：<br>
- * _site:SiteSpec，指定的site地图<br>
- * _code:String，ClassLoader所需要载入的FileID，如果为空则使用APK自带ClassLoader<br>
- * _fragment:String，Fragment的类名<br>
+ * Intent Parameters：<br>
+ * _site	:SiteSpec，Specified site map<br>
+ * _code	:String，ClassLoader need to load FileID, if it is empty then use APK own ClassLoader<br>
+ * _fragment:String，Fragment class name<br>
  * 
  * @author Yimin
  * 
@@ -91,7 +91,7 @@ public class MainActivity extends MyActivity {
 
 		if (!loaded) {
 			TextView text = new TextView(this);
-			text.setText("无法载入页面" + (error == 0 ? "" : " #" + error));
+			text.setText("Unable to load page" + (error == 0 ? "" : " #" + error));
 			text.setLayoutParams(new FrameLayout.LayoutParams(
 					ViewGroup.LayoutParams.WRAP_CONTENT,
 					ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.CENTER));
@@ -113,7 +113,7 @@ public class MainActivity extends MyActivity {
 			classLoader = null;
 			error = 211; // #211
 			TextView text = new TextView(this);
-			text.setText("无法载入页面 #" + error);
+			text.setText("Unable to load page #" + error);
 			text.append("\n" + e);
 			text.setLayoutParams(new FrameLayout.LayoutParams(
 					ViewGroup.LayoutParams.WRAP_CONTENT,

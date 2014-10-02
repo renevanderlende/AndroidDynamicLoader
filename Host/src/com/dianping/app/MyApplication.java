@@ -61,8 +61,7 @@ public class MyApplication extends Application {
 				Log.w("loader", "fail to load site.txt from " + local, e);
 			}
 		}
-		return new SiteSpec("empty.0", "0", new FileSpec[0],
-				new FragmentSpec[0]);
+		return new SiteSpec("empty.0", "0", new FileSpec[0], new FragmentSpec[0]);
 	}
 
 	public Intent urlMap(Intent intent) {

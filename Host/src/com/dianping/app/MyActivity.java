@@ -24,8 +24,7 @@ public class MyActivity extends Activity {
 	}
 
 	@Override
-	public void startActivityFromFragment(Fragment fragment, Intent intent,
-			int requestCode) {
+	public void startActivityFromFragment(Fragment fragment, Intent intent, int requestCode) {
 		intent = urlMap(intent);
 		super.startActivityFromFragment(fragment, intent, requestCode);
 	}
@@ -35,8 +34,6 @@ public class MyActivity extends Activity {
 	}
 
 	public void startActivityForResult(String urlSchema, int requestCode) {
-		startActivityForResult(
-				new Intent(Intent.ACTION_VIEW, Uri.parse(urlSchema)),
-				requestCode);
+		startActivityForResult(new Intent(Intent.ACTION_VIEW, Uri.parse(urlSchema)), requestCode);
 	}
 }

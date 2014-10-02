@@ -13,8 +13,7 @@ public class SiteSpec implements Parcelable {
 	private FileSpec[] files;
 	private FragmentSpec[] fragments;
 
-	public SiteSpec(String id, String version, FileSpec[] files,
-			FragmentSpec[] fragments) {
+	public SiteSpec(String id, String version, FileSpec[] files, FragmentSpec[] fragments) {
 		this.id = id;
 		this.version = version;
 		this.files = files;
@@ -81,8 +80,7 @@ public class SiteSpec implements Parcelable {
 		if (!id.contains(version)) {
 			sb.append(" v").append(version);
 		}
-		sb.append(" (").append(files.length).append(" files, ")
-				.append(fragments.length).append(" fragments)");
+		sb.append(" (").append(files.length).append(" files, ").append(fragments.length).append(" fragments)");
 		return sb.toString();
 	}
 

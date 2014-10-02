@@ -14,10 +14,10 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="#e8dab4" >
 
     <ProgressBar
         style="?android:attr/progressBarStyleLarge"

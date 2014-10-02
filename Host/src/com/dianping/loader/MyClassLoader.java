@@ -15,16 +15,14 @@ public class MyClassLoader extends DexClassLoader {
 	FileSpec file;
 	MyClassLoader[] deps;
 
-	MyClassLoader(FileSpec file, String dexPath, String optimizedDirectory,
-			String libraryPath, ClassLoader parent, MyClassLoader[] deps) {
+	MyClassLoader(FileSpec file, String dexPath, String optimizedDirectory, String libraryPath, ClassLoader parent, MyClassLoader[] deps) {
 		super(dexPath, optimizedDirectory, libraryPath, parent);
 		this.file = file;
 		this.deps = deps;
 	}
 
 	@Override
-	protected Class<?> loadClass(String className, boolean resolve)
-			throws ClassNotFoundException {
+	protected Class<?> loadClass(String className, boolean resolve) throws ClassNotFoundException {
 		Class<?> clazz = findLoadedClass(className);
 		if (clazz != null)
 			return clazz;
@@ -77,15 +75,12 @@ public class MyClassLoader extends DexClassLoader {
 		if (!dir.isDirectory())
 			return null;
 		dir = new File(dir, file.id());
-		File path = new File(dir, TextUtils.isEmpty(file.md5()) ? "1.apk"
-				: file.md5() + ".apk");
+		File path = new File(dir, TextUtils.isEmpty(file.md5()) ? "1.apk" : file.md5() + ".apk");
 		if (!path.isFile())
 			return null;
 		File outdir = new File(dir, "dexout");
 		outdir.mkdir();
-		cl = new MyClassLoader(file, path.getAbsolutePath(),
-				outdir.getAbsolutePath(), null, MyApplication.instance()
-						.getClassLoader(), ps);
+		cl = new MyClassLoader(file, path.getAbsolutePath(), outdir.getAbsolutePath(), null, MyApplication.instance().getClassLoader(), ps);
 		loaders.put(file.id(), cl);
 		return cl;
 	}

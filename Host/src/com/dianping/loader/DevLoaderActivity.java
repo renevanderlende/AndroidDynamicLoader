@@ -30,11 +30,11 @@ import com.dianping.loader.model.SiteSpec;
 import com.dianping.util.EmbedHttpServer;
 
 /**
- * 开发调试启动入口
+ * Development and debugging boot entry
  * <p>
  * 
- * Intent参数：<br>
- * port:int，指定服务器的监听端口号，默认为5036<br>
+ * Intent parameters：<br>
+ * port:int，Specify the server's listening port number, the default is 5036<br>
  * 
  * @author yimin.tu
  * 

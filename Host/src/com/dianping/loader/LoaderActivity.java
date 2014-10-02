@@ -31,10 +31,10 @@ import com.dianping.loader.model.FragmentSpec;
 import com.dianping.loader.model.SiteSpec;
 
 /**
- * 负责下载Fragment运行所需的资源
+ * Responsible for the resources required to run the download Fragment
  * <p>
- * Intent参数：<br>
- * _site:SiteSpec，指定的site地图<br>
+ * Intent Parameters：<br>
+ * _site:SiteSpec，Specified site map<br>
  * 
  * @author Yimin
  * 
@@ -95,7 +95,7 @@ public class LoaderActivity extends MyActivity {
 			boolean upload) {
 		rootView.removeAllViews();
 		TextView text = new TextView(this);
-		text.setText("无法载入页面 #" + (errorCode > 0 ? errorCode : 100)); // #100
+		text.setText("Unable to load page #" + (errorCode > 0 ? errorCode : 100)); // #100
 		if (ex != null) {
 			text.append("\n");
 			text.append(ex.toString());
@@ -107,7 +107,7 @@ public class LoaderActivity extends MyActivity {
 					Gravity.CENTER_HORIZONTAL));
 
 			Button btn = new Button(this);
-			btn.setText("重试");
+			btn.setText("Retry");
 			btn.setLayoutParams(new LinearLayout.LayoutParams(
 					ViewGroup.LayoutParams.WRAP_CONTENT,
 					ViewGroup.LayoutParams.WRAP_CONTENT,
@@ -242,7 +242,7 @@ public class LoaderActivity extends MyActivity {
 			TextView tv = new TextView(LoaderActivity.this);
 			tv.setTag("FileListAndStatus");
 			tv.setLayoutParams(new FrameLayout.LayoutParams(
-					ViewGroup.LayoutParams.FILL_PARENT,
+					ViewGroup.LayoutParams.MATCH_PARENT,
 					ViewGroup.LayoutParams.WRAP_CONTENT, Gravity.TOP));
 			rootView.addView(tv);
 			updateFileListAndStatus();
